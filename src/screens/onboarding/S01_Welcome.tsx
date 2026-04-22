@@ -1,7 +1,8 @@
-import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, SafeAreaView } from 'react-native';
-import { LinearGradient } from 'expo-linear-gradient';
-import { T } from '../../constants/theme';
+import React from "react";
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { LinearGradient } from "expo-linear-gradient";
+import { T } from "../../constants/theme";
 
 interface Props {
   onCreateAccount: () => void;
@@ -14,12 +15,12 @@ export function S01_Welcome({ onCreateAccount }: Props) {
       <View style={styles.heroBg}>
         <Text style={styles.heroLabel}>[ hero/athlete_photo.jpg ]</Text>
         <LinearGradient
-          colors={['transparent', '#000']}
+          colors={["transparent", "#000"]}
           style={styles.heroFade}
         />
       </View>
 
-      <SafeAreaView style={styles.safe}>
+      <SafeAreaView style={styles.safe} edges={["top", "bottom"]}>
         <View style={styles.topLabel}>
           <Text style={styles.brand}>— Tempo</Text>
         </View>
@@ -27,20 +28,27 @@ export function S01_Welcome({ onCreateAccount }: Props) {
         <View style={{ flex: 1 }} />
 
         <View style={styles.copy}>
-          <Text style={styles.headline}>Train with{'\n'}intention.</Text>
+          <Text style={styles.headline}>Train with{"\n"}intention.</Text>
           <Text style={styles.sub}>
-            Personal coaching, adaptive programs, and weekly check-ins — built around how you actually live.
+            Personal coaching, adaptive programs, and weekly check-ins — built
+            around how you actually live.
           </Text>
         </View>
 
         <View style={styles.ctas}>
-          <TouchableOpacity style={styles.primary} onPress={onCreateAccount} activeOpacity={0.85}>
+          <TouchableOpacity
+            style={styles.primary}
+            onPress={onCreateAccount}
+            activeOpacity={0.85}
+          >
             <Text style={styles.primaryLabel}>Create account</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.secondary} activeOpacity={0.7}>
             <Text style={styles.secondaryLabel}>I already have an account</Text>
           </TouchableOpacity>
-          <Text style={styles.legal}>By continuing, you agree to our Terms & Privacy.</Text>
+          <Text style={styles.legal}>
+            By continuing, you agree to our Terms & Privacy.
+          </Text>
         </View>
       </SafeAreaView>
     </View>
@@ -53,30 +61,30 @@ const styles = StyleSheet.create({
     backgroundColor: T.bg,
   },
   heroBg: {
-    position: 'absolute',
+    position: "absolute",
     inset: 0,
     top: 0,
     left: 0,
     right: 0,
     bottom: 0,
-    backgroundColor: '#0a0a0a',
+    backgroundColor: "#0a0a0a",
   },
   heroLabel: {
-    position: 'absolute',
+    position: "absolute",
     top: 100,
     left: 24,
     fontFamily: T.mono,
     fontSize: 10,
-    color: 'rgba(255,255,255,0.28)',
+    color: "rgba(255,255,255,0.28)",
     letterSpacing: 1.2,
-    textTransform: 'uppercase',
+    textTransform: "uppercase",
   },
   heroFade: {
-    position: 'absolute',
+    position: "absolute",
     bottom: 0,
     left: 0,
     right: 0,
-    height: '55%',
+    height: "55%",
   },
   safe: {
     flex: 1,
@@ -89,8 +97,8 @@ const styles = StyleSheet.create({
     fontFamily: T.mono,
     fontSize: 11,
     letterSpacing: 2,
-    color: 'rgba(255,255,255,0.5)',
-    textTransform: 'uppercase',
+    color: "rgba(255,255,255,0.5)",
+    textTransform: "uppercase",
   },
   copy: {
     paddingHorizontal: 24,
@@ -98,7 +106,7 @@ const styles = StyleSheet.create({
   },
   headline: {
     fontSize: 44,
-    fontWeight: '600',
+    fontWeight: "600",
     letterSpacing: -2,
     lineHeight: 44,
     color: T.text,
@@ -120,32 +128,32 @@ const styles = StyleSheet.create({
     height: 56,
     borderRadius: 16,
     backgroundColor: T.text,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
     marginBottom: 12,
   },
   primaryLabel: {
     fontSize: 16,
-    fontWeight: '600',
-    color: '#000',
+    fontWeight: "600",
+    color: "#000",
     letterSpacing: -0.2,
   },
   secondary: {
     height: 56,
     borderRadius: 16,
     borderWidth: 1,
-    borderColor: 'rgba(255,255,255,0.14)',
-    alignItems: 'center',
-    justifyContent: 'center',
+    borderColor: "rgba(255,255,255,0.14)",
+    alignItems: "center",
+    justifyContent: "center",
   },
   secondaryLabel: {
     fontSize: 16,
-    fontWeight: '500',
+    fontWeight: "500",
     color: T.text,
     letterSpacing: -0.2,
   },
   legal: {
-    textAlign: 'center',
+    textAlign: "center",
     marginTop: 20,
     fontSize: 12,
     color: T.dim,

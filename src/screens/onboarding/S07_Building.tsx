@@ -1,17 +1,17 @@
-import React, { useEffect, useRef } from 'react';
-import { View, Text, StyleSheet, Animated } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import { T } from '../../constants/theme';
-import { TopBar } from '../../components/TopBar';
-import { Heading } from '../../components/Heading';
+import React, { useEffect, useRef } from "react";
+import { View, Text, StyleSheet, Animated } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { T } from "../../constants/theme";
+import { TopBar } from "../../components/TopBar";
+import { Heading } from "../../components/Heading";
 
 const LINES = [
-  { text: '✓ analyzing goals', done: true },
-  { text: '✓ matching experience profile', done: true },
-  { text: '✓ balancing 4-day split', done: true },
-  { text: 'assigning starting loads…', done: false, active: true },
-  { text: '  calibrating recovery', done: false },
-  { text: '  generating week 01', done: false },
+  { text: "✓ analyzing goals", done: true },
+  { text: "✓ matching experience profile", done: true },
+  { text: "✓ balancing 4-day split", done: true },
+  { text: "assigning starting loads…", done: false, active: true },
+  { text: "  calibrating recovery", done: false },
+  { text: "  generating week 01", done: false },
 ];
 
 interface Props {
@@ -25,9 +25,17 @@ export function S07_Building({ onDone }: Props) {
   useEffect(() => {
     Animated.loop(
       Animated.sequence([
-        Animated.timing(pulse, { toValue: 0.3, duration: 600, useNativeDriver: true }),
-        Animated.timing(pulse, { toValue: 1, duration: 600, useNativeDriver: true }),
-      ])
+        Animated.timing(pulse, {
+          toValue: 0.3,
+          duration: 600,
+          useNativeDriver: true,
+        }),
+        Animated.timing(pulse, {
+          toValue: 1,
+          duration: 600,
+          useNativeDriver: true,
+        }),
+      ]),
     ).start();
 
     const timer = setTimeout(onDone, 3000);
@@ -36,7 +44,7 @@ export function S07_Building({ onDone }: Props) {
 
   return (
     <View style={styles.screen}>
-      <SafeAreaView style={{ flex: 1 }} edges={['top', 'bottom']}>
+      <SafeAreaView style={{ flex: 1 }} edges={["top", "bottom"]}>
         <TopBar step={6} total={6} />
         <Heading
           eyebrow="Step 06 · Building"
@@ -50,7 +58,13 @@ export function S07_Building({ onDone }: Props) {
               {l.active && (
                 <Animated.View style={[styles.dot, { opacity: pulse }]} />
               )}
-              <Text style={[styles.termText, l.done && styles.termDone, !l.done && !l.active && styles.termFaded]}>
+              <Text
+                style={[
+                  styles.termText,
+                  l.done && styles.termDone,
+                  !l.done && !l.active && styles.termFaded,
+                ]}
+              >
                 {l.text}
               </Text>
             </View>
@@ -63,7 +77,7 @@ export function S07_Building({ onDone }: Props) {
 
         {/* Progress bar */}
         <View style={styles.progressTrack}>
-          <Animated.View style={[styles.progressFill, { width: '62%' }]} />
+          <Animated.View style={[styles.progressFill, { width: "62%" }]} />
         </View>
         <View style={{ height: 34 }} />
       </SafeAreaView>
@@ -77,12 +91,17 @@ const styles = StyleSheet.create({
     marginHorizontal: 24,
     padding: 24,
     borderRadius: 20,
-    backgroundColor: '#0a0a0a',
+    backgroundColor: "#0a0a0a",
     borderWidth: 1,
     borderColor: T.border,
     gap: 4,
   },
-  termLine: { flexDirection: 'row', alignItems: 'center', gap: 8, minHeight: 26 },
+  termLine: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 8,
+    minHeight: 26,
+  },
   dot: {
     width: 8,
     height: 8,
@@ -99,23 +118,23 @@ const styles = StyleSheet.create({
   termDone: { color: T.text },
   termFaded: { opacity: 0.4 },
   hint: {
-    textAlign: 'center',
+    textAlign: "center",
     marginTop: 24,
     fontFamily: T.mono,
     fontSize: 12,
     color: T.dim,
     letterSpacing: 1.2,
-    textTransform: 'uppercase',
+    textTransform: "uppercase",
   },
   progressTrack: {
     marginHorizontal: 24,
     height: 4,
     borderRadius: 4,
-    backgroundColor: 'rgba(255,255,255,0.08)',
-    overflow: 'hidden',
+    backgroundColor: "rgba(255,255,255,0.08)",
+    overflow: "hidden",
   },
   progressFill: {
-    height: '100%',
+    height: "100%",
     backgroundColor: T.text,
     borderRadius: 4,
   },
